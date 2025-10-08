@@ -6,7 +6,7 @@
 
 YNV_SIGNAGE_I2C_MESSAGE::YNV_SIGNAGE_I2C_MESSAGE(void){
     m_length = 2;                                   // Minimum length, without display data
-    m_messageMode = 1;                              // Default mode is ASCII
+    m_messageMode = 1;                                     // Default mode is ASCII
     m_numDisplays = 0;                              // Initialize with no displays
     m_messageBufferTX = (uint8_t*) malloc(8);       // Minimum message length if there's no display data (this will be added after)
     m_messageBufferTX[0] = 0x02;
@@ -105,8 +105,8 @@ uint8_t * YNV_SIGNAGE_I2C_MESSAGE::getMessage(void){
     m_messageBufferTX[1] = m_length >> 8;
     m_messageBufferTX[2] = m_length & 0xFF;
     
-    m_messageBufferTX[3] = m_messageMode;
-    m_messageBufferTX[4] = m_numDisplays;
+    m_messageBufferTX[3] = m_numDisplays;
+    m_messageBufferTX[4] = m_messageMode;
     // Calculate Checksum
     for(uint16_t i = 0; i < m_length; i++){
         checkSum += m_messageBufferTX[i+3];
