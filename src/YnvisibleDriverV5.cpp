@@ -1,6 +1,6 @@
 /**
  * Driver v5 specific code for normal operation
- * Created by Bruno Fonseca - Ynvisible, May 2025
+ * Created by @BFFonseca - Ynvisible, May 2025
  */
 
 #include <Arduino.h>

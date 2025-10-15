@@ -1,8 +1,9 @@
 /*
-	Driver_5_Evaluation.ino - Sketch for the Evaluation Kit running on the Driver v5 board
-	Created by Bruno Fonseca - Ynvisible, May 2025
+	EvaluationKit.ino - Sketch for the Evaluation Kit running on the Driver v5 board
+	Created by @BFFonseca - Ynvisible, May 2025
 	For Driver 5.x Hardware
 */
+
 #include <Arduino.h>
 #include <Wire.h>
 #include "YnvisibleDriverV5.h"
@@ -254,22 +255,7 @@ void delayAfterDisplayRun(unsigned int animationDelay){
   uint64_t timePassed = millis() - lastTime;
   
   if(timePassed < animationDelay){
-    Serial.print("\n\nDelaying for ");
-    Serial.print(animationDelay);
-    Serial.print(" - ");
-    Serial.print(timePassed);
-    Serial.print(" = ");
-    Serial.print(animationDelay-timePassed);
-    Serial.println(" ms\n\n");
-
     delay(animationDelay-timePassed);
-  }
-  else{
-    Serial.println(" ========> time passed higher than animation delay");
-    Serial.print(timePassed);
-    Serial.print(">");
-    Serial.print(animationDelay);
-    Serial.println("\n");
   }
   lastTime = millis();
 }

@@ -1,6 +1,6 @@
 /*
 	Ynvisible_ECD.h - Library for driving Ynvisible's Electrochromic Displays
-	Created by Bruno Fonseca - Ynvisible, October 10 2024
+	Created by @BFFonseca - Ynvisible, October 10 2024
 	For Driver 5.x Hardware
 */
 
