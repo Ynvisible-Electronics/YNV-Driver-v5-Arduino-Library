@@ -217,7 +217,6 @@ void YNV_ECD::refreshDisplay() //Refreshes the display to maintain the current t
       }
     }
     retries++;
-    delay(500);
   }
 
 
@@ -267,7 +266,6 @@ void YNV_ECD::refreshDisplay() //Refreshes the display to maintain the current t
       }
     }
     retries++;
-    delay(500);
   }
 
   disableCounterElectrode();
@@ -348,7 +346,7 @@ void YNV_ECD::disableAllSegments(){ //Put all work electrodes in High-Z mode.
 void YNV_ECD::enableCounterElectrode(float t_voltage) //Enable counter electrode
 {
   analogWrite(m_counterElectrodePin, int(ADC_DAC_MAX_LSB*(t_voltage/m_supplyVoltage)));
-  delay(50);
+  delay(1);
 }
 
 /**

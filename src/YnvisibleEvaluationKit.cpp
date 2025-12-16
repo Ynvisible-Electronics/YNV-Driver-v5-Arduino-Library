@@ -40,42 +40,42 @@ void evaluationKitInit(void){
     // Configuration for 3 Bars Display
     ECD_Config evalKit3BarsConfig;
     evalKit3BarsConfig.coloringTime                 = 1200;
-    evalKit3BarsConfig.bleachingTime                = 1000;
+    evalKit3BarsConfig.bleachingTime                = 900;
 
-    evalKit3BarsConfig.refreshColoringVoltage       = 1.4;
-    evalKit3BarsConfig.refreshColorPulseTime        = 150;
+    evalKit3BarsConfig.refreshColoringVoltage       = 1.3;
+    evalKit3BarsConfig.refreshColorPulseTime        = 300;
 
-    evalKit3BarsConfig.refreshBleachingVoltage      = 1.1;
-    evalKit3BarsConfig.refreshBleachPulseTime       = 300;
+    evalKit3BarsConfig.refreshBleachingVoltage      = 0.8;
+    evalKit3BarsConfig.refreshBleachPulseTime       = 100;
     ecdEvalKit3Bars.setConfig(evalKit3BarsConfig);
  
     // Configuration for Single Segment Kit
     ECD_Config evalKitSingleConfig;
-    evalKitSingleConfig.coloringTime                = 700;
-    evalKitSingleConfig.bleachingTime               = 800;
+    evalKitSingleConfig.coloringTime                = 450;
+    evalKitSingleConfig.bleachingTime               = 250;
 
-    evalKitSingleConfig.refreshColoringVoltage      = 1.4;
-    evalKitSingleConfig.refreshColorPulseTime       = 500;
-    evalKitSingleConfig.refreshBleachingVoltage     = 1.1;
-    evalKitSingleConfig.refreshBleachPulseTime      = 100;
+    evalKitSingleConfig.refreshColoringVoltage      = 1.3;
+    evalKitSingleConfig.refreshColorPulseTime       = 300;
+    evalKitSingleConfig.refreshBleachingVoltage     = 0.9;
+    evalKitSingleConfig.refreshBleachPulseTime      = 75;
 
-    evalKitSingleConfig.refreshBleachLimitLVoltage  = 0.45;
+    evalKitSingleConfig.refreshBleachLimitLVoltage  = 0.44;
     
     ecdEvalKitSingle.setConfig(evalKitSingleConfig);
 
     // Configuration for 15 Segment Displays
     ECD_Config evalKit15SegConfig;
-    evalKit15SegConfig.refreshColoringVoltage       = 1.4;
+    evalKit15SegConfig.refreshColoringVoltage       = 1.3;
     evalKit15SegConfig.refreshColorLimitHVoltage    = 1.0;
-    evalKit15SegConfig.refreshBleachPulseTime       = 100;
-    evalKit15SegConfig.refreshBleachLimitLVoltage   = 0.5;     // Bleach Limit Low [V]
+    evalKit15SegConfig.refreshBleachPulseTime       = 75;
+    evalKit15SegConfig.refreshBleachLimitLVoltage   = 0.3;     // Bleach Limit Low [V]
     ecdEvalKit15SegNeg.setConfig(evalKit15SegConfig);
     ecdEvalKit15SegDot.setConfig(evalKit15SegConfig);
 
     // Configuration for 7 Bars Display
     ECD_Config evalKit7BarsConfig;
     evalKit7BarsConfig.refreshBleachLimitLVoltage   = 0.4;
-    evalKit7BarsConfig.bleachingTime                = 1000;
+    evalKit7BarsConfig.bleachingTime                = 700;
     ecdEvalKit7Bars.setConfig(evalKit7BarsConfig);
 }
 
@@ -247,9 +247,7 @@ void display7SegDotRun(unsigned int number, bool dot){
 
     if(number < EVAL_KIT_7SEG_DOT_MASK_NUM_OF_ANIMATIONS){
         for (int i = 0; i < EVAL_KIT_7SEG_DOT_NUM_SEGMENTS; ++i) {
-            if(i != 3){
                 ecdEvalKit7SegDot.setSegmentState(i, 0);
-            }
         }
         
         ecdEvalKit7SegDot.executeDisplay();
@@ -322,9 +320,12 @@ void display3BarsClear(void){
 void displayDirectSetAll(bool state, uint16_t driveTime){
     p_currentDisplay = &ecdEvalKit15SegNeg;
 
-    pinMode(PIN_CE, OUTPUT);
-    analogWrite(PIN_CE, ADC_DAC_MAX_LSB/2);
-    delay(50);
+    if(state){
+        ecdEvalKit15SegNeg.enableCounterElectrode(SUPPLY_VOLTAGE-REFRESH_COLORING_VOLTAGE);
+    }else{
+        ecdEvalKit15SegNeg.enableCounterElectrode(REFRESH_BLEACHING_VOLTAGE);
+    }
+    delay(10);
 
     for (int i = 0; i < EVAL_KIT_15SEG_NEGATIVE_NUM_SEGMENTS; i++)
     {
@@ -339,6 +340,6 @@ void displayDirectSetAll(bool state, uint16_t driveTime){
         pinMode(evalKit15SegNegPinList[i], INPUT);
     }
     
-    analogWrite(PIN_CE, 0);
+    ecdEvalKit15SegNeg.disableCounterElectrode();
     delay(10);
 }

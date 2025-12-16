@@ -18,20 +18,20 @@
 
 #define REFRESH_COLOR_LIMIT_H_REL_AMP		1.1
 #define REFRESH_COLOR_LIMIT_L_REL_AMP		0.9
-#define REFRESH_BLEACH_LIMIT_H_REL_AMP 	0.2
-#define REFRESH_BLEACH_LIMIT_L_REL_AMP	0.6
+#define REFRESH_BLEACH_LIMIT_H_REL_AMP 		0.2
+#define REFRESH_BLEACH_LIMIT_L_REL_AMP		0.4
 
 #define REFRESH_COLORING_VOLTAGE 			1.3
-#define REFRESH_BLEACHING_VOLTAGE 		0.9
+#define REFRESH_BLEACHING_VOLTAGE 			0.6
 
-#define COLORING_VOLTAGE 				1.5			// V - Absolute value for Color Pulse Voltage
-#define COLORING_TIME 					500			// ms - Color time
-#define BLEACHING_VOLTAGE 			1.2			// V - Absolute value for Bleach Pulse Voltage
-#define BLEACHING_TIME 					500			// ms - Bleach time
+#define COLORING_VOLTAGE 					1.4			// V - Absolute value for Color Pulse Voltage
+#define COLORING_TIME 						200			// ms - Color time
+#define BLEACHING_VOLTAGE 					1.2			// V - Absolute value for Bleach Pulse Voltage
+#define BLEACHING_TIME 						500			// ms - Bleach time
 
-#define REFRESH_COLOR_PULSE_TIME 	100
-#define REFRESH_BLEACH_PULSE_TIME 50
-#define REFRESH_SLEEP_INTERVAL 		10
+#define REFRESH_COLOR_PULSE_TIME 			75
+#define REFRESH_BLEACH_PULSE_TIME 			30
+#define REFRESH_SLEEP_INTERVAL 				10
 
 enum ecdSegmentState_e{
 	SEGMENT_STATE_UNDEFINED = -1,
@@ -77,6 +77,10 @@ class YNV_ECD
 		void clearStopDriving();
 		
 		void setAllSegmentsBleach();
+
+		void enableCounterElectrode(float t_voltage);
+
+		void disableCounterElectrode();
 		
 
 	private:
@@ -107,9 +111,7 @@ class YNV_ECD
 		
 		void disableAllSegments();
 
-		void enableCounterElectrode(float t_voltage);
 
-		void disableCounterElectrode();
 		
 };
 

@@ -26,7 +26,7 @@
 /***********************************************
  *          Animation Parameters               * 
  ***********************************************/
-#define EVAL_KIT_DIRECT_TOGGLE_DELAY            2000        // ms - time for each toggle step (on/off)
+#define EVAL_KIT_DIRECT_TOGGLE_DELAY            4500        // ms - time for each toggle step (on/off)
 
 // 15 Segment Displays
 #define EVAL_KIT_15SEG_COUNT_DELAY              3000        // ms - time each number is ON
