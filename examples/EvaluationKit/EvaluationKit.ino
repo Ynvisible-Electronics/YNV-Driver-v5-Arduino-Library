@@ -284,8 +284,6 @@ void animation15SegPositiveUp(void){
     }
     display15SegNegRun(i, false);
     delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
-    display15SegNegInit();
-    delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
   }
 }
 
@@ -300,8 +298,6 @@ void animation15SegPositiveDown(void){
       return;
     }
     display15SegNegRun(i, false);
-    delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
-    display15SegNegInit();
     delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
   }
 }
@@ -318,8 +314,6 @@ void animation15SegNegativeUp(void){
     }
     display15SegNegRun(i, true);
     delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
-    display15SegNegInit();
-    delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
   }
 }
 
@@ -334,8 +328,6 @@ void animation15SegNegativeDown(void){
       return;
     }
     display15SegNegRun(i, true);
-    delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
-    display15SegNegInit();
     delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
   }
 }
@@ -353,8 +345,6 @@ void animation15SegDotUp(void){
     }
     display15SegDotRun(i, true);
     delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
-    display15SegDotInit();
-    delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
   }
 }
 
@@ -370,8 +360,6 @@ void animation15SegDotDown(void){
       return;
     }
     display15SegDotRun(i, true);
-    delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
-    display15SegDotInit();
     delayAfterDisplayRun(EVAL_KIT_15SEG_COUNT_DELAY);
   }
 }
@@ -409,7 +397,6 @@ void animation7SegDotCountUp(void){
     display7SegDotRun(i, true);
     delayAfterDisplayRun(EVAL_KIT_7SEG_DOT_COUNT_DELAY);
   }
-  //display7SegDotRun(EVAL_KIT_7SEG_DOT_MASK_NUM_OF_ANIMATIONS, false);
 }
 
 /**
@@ -424,7 +411,6 @@ void animation7SegDotCountDown(void){
     display7SegDotRun(i, true);
     delayAfterDisplayRun(EVAL_KIT_7SEG_DOT_COUNT_DELAY);
   }
-  //display7SegDotRun(EVAL_KIT_7SEG_DOT_MASK_NUM_OF_ANIMATIONS, false);
 }
 
 /******************************* 7 Bars Display *******************************/
